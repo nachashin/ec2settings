@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link rel="stylesheet" href="https://andybrewer.github.io/mvp/mvp.css">
+    <style>
+      .menu:hover {cursor:pointer;text-decoration:underline;}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="description" content="SAMPLE PAGE">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAMPLE PAGE</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+    <ul>
+      <li class="menu" id="link1">section 1</li>
+      <li class="menu" id="link2">section 2</li>
+      <li class="menu" id="link3">section 3</li>
+    </ul>
+    </nav>
+    <h1>SAMPLE PAGE</h1>
+  </header>
+
+  <main>
+    <section id="area1">
+      <header>
+        <h2>H2 tag</h2>
+        <p>sub header</p>
+      </header>
+      <aside>
+        <h3>H3 tag</h3>
+        <p>sub header</p>
+      </aside>
+      <aside>
+        <h4>H4 tag</h4>
+        <p>sub header</p>
+      </aside>
+      <aside>
+        <h5>H5 tag</h5>
+        <p>sub header</p>
+      </aside>
+      <aside>
+        <h6>H6 tag</h6>
+        <p>sub header</p>
+      </aside>
+    </section>
+
+    <section id="area2">
+      <header>
+        <h2>table,ul,ol,dl tag</h2>
+        <p>sub header</p>
+      </header>
+
+      <aside>
+        <table>
+        <caption>table</caption>
+        <thead>
+          <tr><th>ID</th><th>Name</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>item 1</td></tr>
+          <tr><td>2</td><td>item 2</td></tr>
+          <tr><td>3</td><td>item 3</td></tr>
+        </tbody>
+        </table>
+      </aside>
+
+      <aside>
+        <ul>
+          <li>list</li>
+          <li>list</li>
+          <li>list</li>
+        </ul>
+      </aside>
+
+      <aside>
+        <ol>
+          <li>list</li>
+          <li>list</li>
+          <li>list</li>
+        </ol>
+      </aside>
+
+      <aside>
+        <dl>
+          <dt>word</dt><dd>definition</dd>
+          <dt>word</dt><dd>definition</dd>
+          <dt>word</dt><dd>definition</dd>
+        </dl>
+      </aside>
+    </section>
+    
+    <section id="area3">
+      <header>
+        <h2>form tags</h2>
+      </header>
+
+      <form>
+      <ul>
+        <li>INPUT FORM(text)<input type="text"/></li>
+        <li>INPUT FORM(radio)<input type="radio"/></li>
+        <li>INPUT FORM(checkbox)<input type="checkbox"/></li>
+        <li>SELECT FORM<select><option value="1">select 1</option><option value="2">select 1</option><option value="3">select 3</option></li>
+      </ul>
+      </form>
+    </section>
+  </main>
+
+<script>
+$(function() {
+  $('section').hide();
+  $('#area1').show();
+  $('.menu').on('click', function() {
+    tgt = '#area' + $(this).attr('id').replace('link','');
+  $('section').hide();
+    $(tgt).show();
+  });
+});
+</script>
+</body>
+</html>
