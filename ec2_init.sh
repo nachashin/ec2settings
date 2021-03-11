@@ -1,10 +1,11 @@
 #!/bin/bash
-cd
+cd /root/ec2settings
 
 # パッケージ追加
 yum -y groupinstall Base "Development Tools"
+amazon-linux-extras install -y epel
 yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
-yum -y install lynx
+yum -y install lynx certbot
 
 # ローカルタイム設定
 ln -sf /usr/share/zoneinfo/Japan /etc/localtime
@@ -18,14 +19,11 @@ sed -i "s/\"UTC\"/\"Japan\"/g" /etc/sysconfig/clock
 
 # .*rcファイルなど取得＆設定
 TGZ=ec2_init.tgz
-wget https://be0.fit/$TGZ
+#wget https://be0.fit/$TGZ
 tar xvfz $TGZ
-for f in .bashrc .exrc .inputrc .screenrc .vimrc
-do
-    /bin/cp ec2/skel/$f /root
-    /bin/cp ec2/skel/$f /home/ec2-user
-    /bin/cp ec2/skel/$f /etc/skel
-done
+/bin/cp ec2/skel/.*rc /root
+/bin/cp ec2/skel/.*rc /home/ec2-user
+/bin/cp ec2/skel/.*rc /etc/skel
 #echo "export LANG=ja_JP.UTF-8" >> /root/.bash_profile
 
 # ツール等コピー
@@ -36,4 +34,4 @@ cat ec2/authorized_keys >> /home/ec2-user/.ssh/authorized_keys
 chown -R ec2-user:ec2-user /home/ec2-user
 
 # 後始末
-rm -rf ec2*
+#rm -rf ec2*
