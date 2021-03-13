@@ -20,10 +20,10 @@ else
     echo "DNSIP: $DNSIP"
     echo "MYIP : $MYIP"
     if [ "$DNSIP" = "$MYIP" ]; then
-        cd
-        wget https://be0.fit/certbot-auto
+        cd /root/init
+        #wget https://be0.fit/certbot-auto
         chmod a+x certbot-auto
-        ./certbot-auto certonly --webroot -w /usr/share/nginx/html -d $1 -m root@$1 -n --agree-tos --debug
+        certbot certonly --webroot -w /usr/share/nginx/html -d $1 -m root@$1 -n --agree-tos --debug
         cd /etc/nginx
 
 #        BUP=nginx.conf_orig
