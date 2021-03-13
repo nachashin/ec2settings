@@ -22,7 +22,7 @@ else
     if [ "$DNSIP" = "$MYIP" ]; then
         cd /root/init
         #wget https://be0.fit/certbot-auto
-        chmod a+x certbot-auto
+        #chmod a+x certbot-auto
         certbot certonly --webroot -w /usr/share/nginx/html -d $1 -m root@$1 -n --agree-tos --debug
         cd /etc/nginx
 
